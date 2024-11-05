@@ -37,7 +37,7 @@ export const AddListDialog = ({ children }: AddListDialogProps) => {
     defaultValues: {},
   });
 
-  const { mutateAsync: addListAsync, isPending } = useMutation({
+  const { mutateAsync: addListAsync } = useMutation({
     mutationFn: async (values: AddList) => {
       const result = await AddListAction(values);
       if (!result?.data) {
@@ -63,12 +63,15 @@ export const AddListDialog = ({ children }: AddListDialogProps) => {
         <DialogHeader>
           <DialogTitle>Add new list</DialogTitle>
           <DialogDescription>
-            Fill the form bellow to create a new trip.
+            Fill the form bellow to create a new list.
           </DialogDescription>
         </DialogHeader>
         <Form
           form={form}
-          onSubmit={async (v) => addListAsync(v)}
+          onSubmit={async (v) => {
+            console.log("🚀 ~ onSubmit={ ~ v:", v);
+            addListAsync(v);
+          }}
           className="flex flex-col gap-4"
         >
           <FormField
