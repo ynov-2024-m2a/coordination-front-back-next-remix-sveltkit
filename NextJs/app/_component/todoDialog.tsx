@@ -17,7 +17,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
+} from "../../src/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -25,9 +25,9 @@ import {
   FormItem,
   FormMessage,
   useZodForm,
-} from "../ui/form";
-import { Textarea } from "../ui/textarea";
-import { UnsavedBar } from "../ui/unsavedBar";
+} from "../../src/components/ui/form";
+import { Textarea } from "../../src/components/ui/textarea";
+import { UnsavedBar } from "../../src/components/ui/unsavedBar";
 
 type TodoDialogProps = PropsWithChildren<{
   todo: todoDto;

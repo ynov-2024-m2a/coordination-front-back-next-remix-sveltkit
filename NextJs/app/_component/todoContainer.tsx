@@ -1,7 +1,11 @@
 import { todosDto } from "@/features/todo/todo.type.schema";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Typography } from "../ui/typography";
-import { TodoDialog } from "./todoDialog";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../src/components/ui/card";
+import { Typography } from "../../src/components/ui/typography";
 import { TodoListItem } from "./todoListItem";
 
 type TodoContainerProps = {
@@ -19,7 +23,7 @@ export const TodoContainer = ({ todos }: TodoContainerProps) => {
       </CardHeader>
       <CardContent>
         {todos.map((todo) => (
-            <TodoListItem todo={todo} key={todo.id} />
+          <TodoListItem todo={todo} key={todo.id} />
         ))}
       </CardContent>
     </Card>

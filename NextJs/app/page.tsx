@@ -1,5 +1,3 @@
-import { AddTodoDialog } from "@/components/todo/addTodoDialog";
-import { TodoContainer } from "@/components/todo/todoContainer";
 import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 import {
@@ -11,6 +9,8 @@ import {
 } from "@/features/page/layout";
 import { GetTodosQuery } from "@/features/todo/getTodos.query";
 import { PlusIcon } from "lucide-react";
+import { AddTodoDialog } from "./_component/addTodoDialog";
+import { TodoContainer } from "./_component/todoContainer";
 
 const HomePage = async () => {
   const todos = await GetTodosQuery({

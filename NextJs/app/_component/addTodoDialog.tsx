@@ -14,7 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
+} from "../../src/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -23,9 +23,9 @@ import {
   FormLabel,
   FormMessage,
   useZodForm,
-} from "../ui/form";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
+} from "../../src/components/ui/form";
+import { Input } from "../../src/components/ui/input";
+import { Textarea } from "../../src/components/ui/textarea";
 
 export type AddTodoDialogProps = PropsWithChildren;
 
