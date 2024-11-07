@@ -19,6 +19,7 @@ export const List = async ({ list }: ListProps) => {
       listId: list.id,
     },
   });
+  console.log("🚀 ~ List ~ todos:", todos);
 
   return (
     <Card className="h-fit mt-4 bg-card first:ml-4 last:mr-4 w-96 group">
@@ -41,8 +42,8 @@ export const List = async ({ list }: ListProps) => {
         </div>
         {!!todos.length && (
           <div className="w-full flex flex-col gap-2">
-            {todos.map((todo, idx) => (
-              <TodoDialog key={idx} todo={todo}>
+            {todos.map((todo) => (
+              <TodoDialog key={todo.id} todo={todo}>
                 <TodoListItem todo={todo} className="first:mt-2" />
               </TodoDialog>
             ))}

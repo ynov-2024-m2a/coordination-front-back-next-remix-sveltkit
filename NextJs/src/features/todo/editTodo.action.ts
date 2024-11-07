@@ -1,15 +1,8 @@
+"use server";
+
 import { action } from "@/lib/backend/safe-actions";
-import { z } from "zod";
 import { EditTodoQuery } from "./editTodo.query";
-
-export const EditTodoSchema = z.object({
-  id: z.string(),
-  content: z.string(),
-  limitDate: z.date().nullable(),
-  title: z.string(),
-});
-
-export type EditTodo = z.infer<typeof EditTodoSchema>;
+import { EditTodoSchema } from "./editTodo.schema";
 
 export const EditTodoAction = action
   .schema(EditTodoSchema)

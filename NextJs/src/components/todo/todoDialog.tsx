@@ -1,11 +1,9 @@
 "use client";
 
-import {
-  EditTodo,
-  EditTodoAction,
-  EditTodoSchema,
-} from "@/features/todo/editTodo.action";
+import { EditTodoAction } from "@/features/todo/editTodo.action";
+import { EditTodo, EditTodoSchema } from "@/features/todo/editTodo.schema";
 import { todoDto } from "@/features/todo/todo.type.schema";
+import { useDisclosure } from "@/hooks/useDisclosure";
 import { isActionSuccessful } from "@/lib/backend/action-utils";
 import { cn } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
@@ -44,6 +42,13 @@ export const TodoDialog = ({ children, todo }: TodoDialogProps) => {
       title: todo.title,
     },
   });
+  console.log("🚀 ~ TodoDialog ~ form:", form);
+
+  const [isOpen, formHandler] = useDisclosure(false, {
+    onClose() {
+      form.reset();
+    },
+  });
 
   const router = useRouter();
 
@@ -62,7 +67,10 @@ export const TodoDialog = ({ children, todo }: TodoDialogProps) => {
 
       toast.success("Todo updated");
     },
-    onSuccess: () => router.refresh(),
+    onSuccess: () => {
+      formHandler.close();
+      router.refresh();
+    },
   });
 
   const isDirty = form.formState.isDirty;
@@ -84,11 +92,10 @@ export const TodoDialog = ({ children, todo }: TodoDialogProps) => {
 
   return (
     <Dialog
-      onOpenChange={(isOpen) => {
-        if (!isOpen) form.reset();
-      }}
+      open={isOpen}
+      onOpenChange={(state) => !state && formHandler.close()}
     >
-      <DialogTrigger>{children}</DialogTrigger>
+      <DialogTrigger onClick={formHandler.open}>{children}</DialogTrigger>
       <Form form={form} onSubmit={() => {}}>
         <DialogContent className={cn("px-4", isDirty ? "pb-24" : null)}>
           <DialogHeader>
@@ -100,7 +107,7 @@ export const TodoDialog = ({ children, todo }: TodoDialogProps) => {
                   <FormControl>
                     <DialogTitle
                       contentEditable
-                      className="hover:border border-input p-2 rounded-md"
+                      className="hover:border border-input p-2 rounded-md "
                       onBlur={(e) =>
                         field.onChange(e.currentTarget.textContent)
                       }
