@@ -1,19 +1,29 @@
-import { useNextTopLoaderStore } from "@/features/page/nextTopLoader";
+import { useProgressBarStore } from "@/features/page/nextTopLoader";
 import { useEffect } from "react";
+
+// To avoid multiple warning by different components
+// We allow only once every 2 seconds
+// Else we do nothing
+let alreadyWarned = false;
 
 // Comment : https://github.com/vercel/next.js/discussions/9662#discussioncomment-8819562
 export const useWarnIfUnsavedChanges = (unsaved: boolean, message?: string) => {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleAnchorClick = (e: any) => {
+      if (alreadyWarned || e.metaKey) return; // Check if CMD key is pressed
       const targetUrl = e.currentTarget.href;
       const currentUrl = window.location.href;
       if (targetUrl !== currentUrl) {
         if (window.onbeforeunload) {
+          alreadyWarned = true;
           // @ts-expect-error - onbeforeunload is a function
           const res = window.onbeforeunload();
           if (!res) {
             e.preventDefault();
+            setTimeout(() => {
+              alreadyWarned = false;
+            }, 2000);
           }
         }
       }
@@ -41,22 +51,24 @@ export const useWarnIfUnsavedChanges = (unsaved: boolean, message?: string) => {
 
   useEffect(() => {
     const beforeUnloadHandler = () => {
-      useNextTopLoaderStore.getState().disable();
-
+      useProgressBarStore.getState().disable();
       const yes = confirm(
         message ??
           "Changes you made has not been saved just yet. Do you wish to proceed anyway?",
       );
 
-      if (!yes) return;
+      if (yes) {
+        useProgressBarStore.getState().enable();
+        return true;
+      }
 
-      useNextTopLoaderStore.getState().enable();
+      return false;
     };
     window.onbeforeunload = unsaved ? beforeUnloadHandler : null;
 
     return () => {
       window.onbeforeunload = null;
-      useNextTopLoaderStore.getState().enable();
+      useProgressBarStore.getState().enable();
     };
   }, [unsaved, message]);
 };

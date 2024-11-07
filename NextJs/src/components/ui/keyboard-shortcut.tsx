@@ -2,42 +2,46 @@
 
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import type { ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef } from "react";
 
 const keyboardShortcutVariants = cva(
-  "pointer-events-none inline-flex items-center gap-1 overflow-hidden text-nowrap rounded border font-mono shadow-[0_2px_0px_0px_rgba(0,0,0,0.5)]",
-
+  "inline-flex items-center justify-center rounded border-y border-b-gray-200 border-t-white bg-gray-100 px-1.5 font-sans text-[11px] text-gray-800 ring-1 ring-gray-300 dark:border-b-gray-950 dark:border-t-transparent dark:bg-white/10 dark:text-white dark:ring-white/15",
   {
     variants: {
-      variant: {
-        default: "bg-muted text-muted-foreground",
-        primary: "bg-primary text-primary-foreground",
-        success:
-          "border-green-400 bg-success text-success-foreground dark:border-green-800",
-      },
       size: {
         sm: "h-4 px-1 text-xs font-medium",
-        default: "h-5 px-1.5 text-xs font-medium",
+        default: "h-5 min-w-5",
         lg: "h-6 px-2 text-sm font-medium",
+      },
+      isKeyDown: {
+        true: "translate-y-0.5 bg-accent shadow-none",
       },
     },
     defaultVariants: {
-      variant: "default",
       size: "default",
     },
   },
 );
 export type KeyboardShortcutProps = ComponentPropsWithoutRef<"kbd"> &
-  VariantProps<typeof keyboardShortcutVariants>;
+  VariantProps<typeof keyboardShortcutVariants> & {
+    eventKey?: string;
+  };
 
 export const KeyboardShortcut = ({
   children,
-  variant,
   size,
   ...props
 }: KeyboardShortcutProps) => {
   return (
-    <kbd className={cn(keyboardShortcutVariants({ variant, size }))} {...props}>
+    <kbd
+      {...props}
+      className={cn(
+        keyboardShortcutVariants({
+          size,
+          className: props.className,
+        }),
+      )}
+    >
       {children}
     </kbd>
   );

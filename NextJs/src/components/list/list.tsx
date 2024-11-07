@@ -2,6 +2,8 @@ import { ListDto } from "@/features/list/listDto.schema";
 import { getTodoByListIdQuery } from "@/features/todo/getTodoByListId.query";
 import { PlusCircle } from "lucide-react";
 import { AddTodoDialog } from "../todo/addTodoDialog";
+import { TodoDialog } from "../todo/todoDialog";
+import { TodoListItem } from "../todo/todoListItem";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Typography } from "../ui/typography";
@@ -38,12 +40,12 @@ export const List = async ({ list }: ListProps) => {
           </AddTodoDialog>
         </div>
         {!!todos.length && (
-          <div className="w-full flex gap-2">
-            <li>
-              {todos.map((todo, idx) => (
-                <ul key={idx}>{todo.title}</ul>
-              ))}
-            </li>
+          <div className="w-full flex flex-col gap-2">
+            {todos.map((todo, idx) => (
+              <TodoDialog key={idx} todo={todo}>
+                <TodoListItem todo={todo} className="first:mt-2" />
+              </TodoDialog>
+            ))}
           </div>
         )}
       </CardContent>

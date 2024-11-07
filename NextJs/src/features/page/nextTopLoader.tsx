@@ -1,10 +1,11 @@
 "use client";
 
+/* eslint-disable no-nested-ternary */
 import * as NProgress from "nprogress";
 import * as React from "react";
 import { create } from "zustand";
 
-type NextTopLoaderProps = {
+export type NextTopLoaderProps = {
   /**
    * Color for the TopLoader.
    * @default "#29d"
@@ -76,7 +77,7 @@ const isAnchorOfCurrentUrl = (currentUrl: string, newUrl: string) => {
   );
 };
 
-export const useNextTopLoaderStore = create<{
+export const useProgressBarStore = create<{
   isEnable: boolean;
   disable: () => void;
   enable: () => void;
@@ -86,7 +87,7 @@ export const useNextTopLoaderStore = create<{
   enable: () => set({ isEnable: true }),
 }));
 
-export const NextTopLoader = ({
+const NextTopLoader = ({
   color = "#29d",
   height = 3,
   showSpinner = true,
@@ -152,7 +153,7 @@ export const NextTopLoader = ({
     };
 
     const handleClick = (event: MouseEvent) => {
-      if (useNextTopLoaderStore.getState().isEnable === false) return;
+      if (useProgressBarStore.getState().isEnable === false) return;
 
       // if ctrl or cmd key is pressed, don't intercept
       if (event.ctrlKey || event.metaKey) return;
@@ -194,15 +195,4 @@ export const NextTopLoader = ({
   return styles;
 };
 
-/**
- * Stop loading of the current top loader bar
- */
-export const stopLoading = () => {
-  setTimeout(() => {
-    NProgress.start();
-    NProgress.done();
-    for (const el of document.querySelectorAll("html")) {
-      el.classList.remove("nprogress-busy");
-    }
-  }, 100);
-};
+export default NextTopLoader;
