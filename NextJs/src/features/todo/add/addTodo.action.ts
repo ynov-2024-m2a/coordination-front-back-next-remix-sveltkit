@@ -1,18 +1,16 @@
 "use server";
 
 import { action } from "@/lib/backend/safe-actions";
-import { AddTodoQuery } from "./addTodo.query";
 import { AddTodoSchema } from "./addTodo.schema";
+import { AddTodoQuery } from "./addTodo.query";
 
 export const AddTodoAction = action
   .schema(AddTodoSchema)
-  .action(async ({ parsedInput: { content, limitDate, listId, title } }) => {
+  .action(async ({ parsedInput: { content, title } }) => {
     const todo = await AddTodoQuery({
       data: {
         content,
         title,
-        limitDate,
-        listId,
       },
     });
 

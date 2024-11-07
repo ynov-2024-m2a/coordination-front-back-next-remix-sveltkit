@@ -1,7 +1,7 @@
 import { createSafeActionClient } from "next-safe-action";
 import { logger } from "../logger";
 
-export class ActionError extends Error {
+class ActionError extends Error {
   constructor(message: string) {
     super(message);
   }

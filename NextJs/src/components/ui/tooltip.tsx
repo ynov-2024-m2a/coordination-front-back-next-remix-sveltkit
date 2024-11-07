@@ -51,19 +51,4 @@ const InlineTooltip = ({
   );
 };
 
-const Tooltip = (props: React.ComponentPropsWithoutRef<typeof TooltipRoot>) => {
-  return (
-    <TooltipProvider>
-      <TooltipRoot {...props} />
-    </TooltipProvider>
-  );
-};
-
-export {
-  InlineTooltip,
-  
-  
-  
-  
-  
-};
+export { InlineTooltip };

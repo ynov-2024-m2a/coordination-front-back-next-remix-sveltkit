@@ -1,4 +1,4 @@
-import { todosDto } from "@/features/todo/todo.type.schema";
+import { GetTodosQuery } from "@/features/todo/get/getTodos.query";
 import {
   Card,
   CardContent,
@@ -8,11 +8,21 @@ import {
 import { Typography } from "../../src/components/ui/typography";
 import { TodoListItem } from "./todoListItem";
 
-type TodoContainerProps = {
-  todos: todosDto;
-};
+type TodoContainerProps = {};
 
-export const TodoContainer = ({ todos }: TodoContainerProps) => {
+export const TodoContainer = async ({}: TodoContainerProps) => {
+  const {
+    success,
+    data: todos,
+    error,
+  } = await GetTodosQuery({
+    query: {
+      orderBy: { createdAt: "asc" },
+    },
+  });
+
+  if (!success) throw new Error("Failed to fetch todos: " + error?.message);
+
   return (
     <Card>
       <CardHeader className="bg-muted">

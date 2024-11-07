@@ -7,21 +7,11 @@ import {
   LayoutHeader,
   LayoutTitle,
 } from "@/features/page/layout";
-import { GetTodosQuery } from "@/features/todo/getTodos.query";
 import { PlusIcon } from "lucide-react";
 import { AddTodoDialog } from "./_component/addTodoDialog";
 import { TodoContainer } from "./_component/todoContainer";
 
 const HomePage = async () => {
-  const todos = await GetTodosQuery({
-    query: {
-      orderBy: { createdAt: "asc" },
-    },
-  });
-
-  if (!todos.success)
-    throw new Error("Failed to fetch todos: " + todos.error?.message);
-
   return (
     <Layout>
       <LayoutHeader>
@@ -41,7 +31,7 @@ const HomePage = async () => {
         </LayoutActions>
       </LayoutHeader>
       <LayoutContent>
-        <TodoContainer todos={todos.data} />
+        <TodoContainer />
       </LayoutContent>
     </Layout>
   );

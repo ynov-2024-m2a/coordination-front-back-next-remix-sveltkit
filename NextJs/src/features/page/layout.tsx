@@ -38,7 +38,7 @@ export const LayoutTitle = (props: ComponentPropsWithoutRef<"h1">) => {
   return <Typography {...props} variant="h2" className={cn(props.className)} />;
 };
 
-export const LayoutDescription = (props: ComponentPropsWithoutRef<"p">) => {
+const LayoutDescription = (props: ComponentPropsWithoutRef<"p">) => {
   return <Typography {...props} className={cn(props.className)} />;
 };
 

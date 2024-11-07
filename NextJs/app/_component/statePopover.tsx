@@ -1,14 +1,10 @@
-import { updateStateQuery } from "@/features/todo/updateState.query";
+import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { updateStateQuery } from "@/features/todo/update/updateState.query";
 import { State } from "@prisma/client";
 import { CheckCircle, CheckCircle2Icon, CircleDashed } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import { PropsWithChildren } from "react";
-import { Button } from "../../src/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "../../src/components/ui/popover";
 
 type StatePopoverProps = PropsWithChildren<{
   todoId: string;

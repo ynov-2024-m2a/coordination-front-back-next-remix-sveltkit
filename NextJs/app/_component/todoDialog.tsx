@@ -1,7 +1,5 @@
 "use client";
 
-import { EditTodoAction } from "@/features/todo/editTodo.action";
-import { EditTodo, EditTodoSchema } from "@/features/todo/editTodo.schema";
 import { todoDto } from "@/features/todo/todo.type.schema";
 import { useDisclosure } from "@/hooks/useDisclosure";
 import { isActionSuccessful } from "@/lib/backend/action-utils";
@@ -28,6 +26,8 @@ import {
 } from "../../src/components/ui/form";
 import { Textarea } from "../../src/components/ui/textarea";
 import { UnsavedBar } from "../../src/components/ui/unsavedBar";
+import { EditTodo, EditTodoSchema } from "@/features/todo/update/editTodo.schema";
+import { EditTodoAction } from "@/features/todo/update/editTodo.action";
 
 type TodoDialogProps = PropsWithChildren<{
   todo: todoDto;

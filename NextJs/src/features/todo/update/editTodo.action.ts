@@ -1,8 +1,8 @@
 "use server";
 
+import { EditTodoQuery } from "@/features/todo/update/editTodo.query";
+import { EditTodoSchema } from "@/features/todo/update/editTodo.schema";
 import { action } from "@/lib/backend/safe-actions";
-import { EditTodoQuery } from "./editTodo.query";
-import { EditTodoSchema } from "./editTodo.schema";
 
 export const EditTodoAction = action
   .schema(EditTodoSchema)

@@ -1,7 +1,7 @@
 "use client";
 
 import { alertDialog } from "@/features/alert-dialog/alert-dialog-store";
-import { DeleteTodoAction } from "@/features/todo/deleteTodo.action";
+import { DeleteTodoAction } from "@/features/todo/delete/deleteTodo.action";
 import { todoDto } from "@/features/todo/todo.type.schema";
 import { isActionSuccessful } from "@/lib/backend/action-utils";
 import { useMutation } from "@tanstack/react-query";

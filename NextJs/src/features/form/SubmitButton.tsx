@@ -8,7 +8,7 @@ import type { ButtonProps } from "../../components/ui/button";
 import { Button } from "../../components/ui/button";
 import { Loader } from "../../components/ui/loader";
 
-export const SubmitButton = (props: ButtonProps) => {
+const SubmitButton = (props: ButtonProps) => {
   const { pending } = useFormStatus();
 
   return (

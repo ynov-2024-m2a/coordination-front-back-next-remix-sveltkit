@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
-import { todoSchema } from "./todo.type.schema";
+import { todoSchema } from "../todo.type.schema";
 
 type UpdateStateQueryProps = {
   where: Prisma.TodoWhereUniqueInput;

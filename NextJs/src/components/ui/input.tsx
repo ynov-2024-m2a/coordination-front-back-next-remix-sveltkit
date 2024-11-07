@@ -20,7 +20,7 @@ const inputVariants = cva(
   },
 );
 
-export type BaseInputProps = React.InputHTMLAttributes<HTMLInputElement>;
+type BaseInputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
 type Size = VariantProps<typeof inputVariants>["size"] | (number & {});
 
@@ -47,7 +47,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = "Input";
 
-export const InputUnit = React.forwardRef<
+const InputUnit = React.forwardRef<
   HTMLInputElement,
   InputProps & {
     nextChildren?: React.ReactNode;

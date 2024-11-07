@@ -1,8 +1,8 @@
 "use client";
 
 import { LoadingButton } from "@/features/form/SubmitButton";
-import { AddTodoAction } from "@/features/todo/addTodo.action";
-import { AddTodo, AddTodoSchema } from "@/features/todo/addTodo.schema";
+import { AddTodoAction } from "@/features/todo/add/addTodo.action";
+import { AddTodo, AddTodoSchema } from "@/features/todo/add/addTodo.schema";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { PropsWithChildren, useState } from "react";

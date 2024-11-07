@@ -1,26 +1,6 @@
 import type { ReactNode } from "react";
 
 /**
- * @name PageParams
- *
- * @usage
- * In NextJS, params are the dynamic parts of the URL.
- * For example, if you have a page with the route `/posts/[id]`, then `id` is a param.
- *
- * You can then use the `PageParams` type to define the type of the params.
- *
- * ```tsx
- * export default function Page(params: PageParams<{ id: string }>) {
- *   ...
- * }
- * ```
- */
-type PageParams<T extends Record<string, string> = {}> = {
-  params: T;
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-/**
  * @name LayoutParams
  *
  * @usage
@@ -37,15 +17,4 @@ type PageParams<T extends Record<string, string> = {}> = {
 export type LayoutParams<T extends Record<string, string> = {}> = {
   params: T;
   children?: ReactNode | undefined;
-};
-
-/**
- * @name ErrorParams
- *
- * @usage
- * This type is used to define the parameters of the `error.tsx` page.
- */
-type ErrorParams = {
-  error: Error & { digest?: string };
-  reset: () => void;
 };
