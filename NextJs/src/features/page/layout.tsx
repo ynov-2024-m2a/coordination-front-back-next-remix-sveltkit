@@ -22,7 +22,7 @@ export const Layout = (
   );
 };
 
-const LayoutHeader = (props: ComponentPropsWithoutRef<"div">) => {
+export const LayoutHeader = (props: ComponentPropsWithoutRef<"div">) => {
   return (
     <div
       {...props}
@@ -34,15 +34,15 @@ const LayoutHeader = (props: ComponentPropsWithoutRef<"div">) => {
   );
 };
 
-const LayoutTitle = (props: ComponentPropsWithoutRef<"h1">) => {
+export const LayoutTitle = (props: ComponentPropsWithoutRef<"h1">) => {
   return <Typography {...props} variant="h2" className={cn(props.className)} />;
 };
 
-const LayoutDescription = (props: ComponentPropsWithoutRef<"p">) => {
+export const LayoutDescription = (props: ComponentPropsWithoutRef<"p">) => {
   return <Typography {...props} className={cn(props.className)} />;
 };
 
-const LayoutActions = (props: ComponentPropsWithoutRef<"div">) => {
+export const LayoutActions = (props: ComponentPropsWithoutRef<"div">) => {
   return (
     <div {...props} className={cn("flex items-center", props.className)} />
   );

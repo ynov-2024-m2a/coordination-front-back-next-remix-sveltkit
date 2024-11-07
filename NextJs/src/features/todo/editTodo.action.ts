@@ -6,13 +6,7 @@ import { EditTodoSchema } from "./editTodo.schema";
 
 export const EditTodoAction = action
   .schema(EditTodoSchema)
-  .action(async ({ parsedInput: { content, id, title, limitDate } }) => {
-    console.log("🚀 ~ .action ~ parsedInput:", {
-      content,
-      id,
-      title,
-      limitDate,
-    });
+  .action(async ({ parsedInput: { content, id, title } }) => {
     const res = await EditTodoQuery({
       where: {
         id,
@@ -20,10 +14,8 @@ export const EditTodoAction = action
       data: {
         content,
         title,
-        limitDate,
       },
     });
-    console.log("🚀 ~ .action ~ res:", res);
 
     return res;
   });

@@ -38,11 +38,9 @@ export const TodoDialog = ({ children, todo }: TodoDialogProps) => {
     schema: EditTodoSchema,
     defaultValues: {
       content: todo.content,
-      limitDate: todo.limitDate,
       title: todo.title,
     },
   });
-  console.log("🚀 ~ TodoDialog ~ form:", form);
 
   const [isOpen, formHandler] = useDisclosure(false, {
     onClose() {

@@ -1,10 +1,10 @@
+import { State } from "@prisma/client";
 import { z } from "zod";
 
 export const AddTodoSchema = z.object({
-  listId: z.string(),
   title: z.string().min(3),
   content: z.string(),
-  limitDate: z.date().nullable(),
+  state: z.nativeEnum(State).default(State.NOT_STARTED),
 });
 
 export type AddTodo = z.infer<typeof AddTodoSchema>;
