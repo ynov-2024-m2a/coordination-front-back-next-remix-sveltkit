@@ -1,7 +1,7 @@
 export const SiteConfig = {
   title: "Todo",
   description: "It's a classic todo app",
-  prodUrl: "https://acme.fr",
+  prodUrl: "https://todo.dercraker.fr.fr",
   domain: "acme.fr",
   appIcon: "/images/icon.png",
   company: {
@@ -9,6 +9,6 @@ export const SiteConfig = {
     address: "In the clouds",
   },
   brand: {
-    primary: "#007291",
+    primary: "#1f9d55",
   },
 };
