@@ -1,0 +1,110 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    text-align: center;
+    color: #fcf8f8;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .form {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  .input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .addButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .addButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #282c34;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .taskInfo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .task {
+    font-weight: bold;
+  }
+  
+  .task.done {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+  
+  .date {
+    font-size: 0.8em;
+    color: #d6cece;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .iconButton {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+  }
+  
+  .iconButton:hover {
+    transform: scale(1.2);
+  }
+  
+  .validateIcon {
+    color: green;
+    font-size: 1.2rem;
+  }
+  
+  .deleteIcon {
+    color: red;
+    font-size: 1.2rem;
+  }
+  
