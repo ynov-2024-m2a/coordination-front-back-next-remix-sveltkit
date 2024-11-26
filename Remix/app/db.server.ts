@@ -1,6 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 
-let db;
+declare global {
+  var __db: PrismaClient | undefined;
+}
+
+let db: PrismaClient;
 if (process.env.NODE_ENV === "production") {
   db = new PrismaClient();
 } else {
