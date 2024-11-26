@@ -1,0 +1,31 @@
+{
+	"name": "svelte-js",
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"format": "prettier --write .",
+		"lint": "prettier --check ."
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^3.3.1",
+		"@sveltejs/kit": "^2.8.4",
+		"@sveltejs/vite-plugin-svelte": "^4.0.2",
+		"autoprefixer": "^10.4.20",
+		"prettier": "^3.3.3",
+		"prettier-plugin-svelte": "^3.3.2",
+		"prettier-plugin-tailwindcss": "^0.6.9",
+		"svelte": "^5.2.8",
+		"tailwindcss": "^3.4.15",
+		"vite": "^5.4.11"
+	},
+	"dependencies": {
+		"@tailwindcss/container-queries": "^0.1.1",
+		"@tailwindcss/forms": "^0.5.9",
+		"@tailwindcss/typography": "^0.5.15",
+		"dotenv": "^16.4.5",
+		"pg": "^8.13.1"
+	}
+}
